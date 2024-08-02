@@ -52,7 +52,7 @@ jobs:
       
       - name: Deploy Docker container on AWS via SSH
         run: |  # Pre-requisite: docker has been installed on remote machine
-          ssh remote_host "docker ps -a"                         # remote_host as defined in ~/.ssh/config
-          ssh remote_host "docker ps -q | xargs -r docker stop"  # stops any running container
+          ssh remote_host "docker ps -a"                         
+          ssh remote_host "docker ps -q | xargs -r docker stop"  
           ssh remote_host "docker pull ${IMAGE_NAME}"
           ssh remote_host "docker run -d -p 80:80 ${IMAGE_NAME}:latest"
